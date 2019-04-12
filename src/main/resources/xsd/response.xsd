@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.myexample.com/my-service/response"
+	targetNamespace="http://www.myexample.com/my-service/response">
+
+
+	<xs:element name="StudentDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Student" type="tns:Student" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:complexType name="Student">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="standard" type="xs:int" />
+			<xs:element name="address" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+</xs:schema>

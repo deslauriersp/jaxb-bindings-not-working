@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="2.1"
+	 xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!-- the 1234 uid lets us know that the binding has been picked up by XJC -->
+	<jaxb:globalBindings>
+		<jaxb:serializable uid="1234" />
+	</jaxb:globalBindings>
+
+	<!-- this works, but this is not what I want for reason outside the scope of this demo code -->
+	<jaxb:bindings schemaLocation="../xsd/response.xsd" node="//xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="com.response" />
+		</jaxb:schemaBindings>
+	</jaxb:bindings>
+
+	<!-- this is supposed to work as documented in multiple locations -->
+	<!-- https://github.com/highsource/maven-jaxb2-plugin/wiki/Configure-Target-Packages-in-Binding-Files -->
+	<!-- https://javaee.github.io/jaxb-v2/doc/user-guide/ch03.html#customization-of-schema-compilation-using-scd-for-customizations -->
+	<jaxb:bindings xmlns:tns="http://www.myexample.com/my-service/request" scd="x-schema::tns">
+		<jaxb:schemaBindings >
+			<jaxb:package name="com.request" />
+		</jaxb:schemaBindings>
+	</jaxb:bindings>
+
+	<!-- see the resulting META-INF/sun-jaxb-episode, very similar  -->
+	<!-- 
+	<bindings xmlns:tns="http://www.myexample.com/my-service/request" if-exists="true" scd="x-schema::tns">
+		<schemaBindings map="false">
+			<package name="com.myexample.my_service.request" />
+		</schemaBindings>
+		<bindings if-exists="true" scd="tns:StudentDetailsRequest">
+			<class ref="com.myexample.my_service.request.StudentDetailsRequest" />
+		</bindings>
+	</bindings>
+	 -->
+
+
+</jaxb:bindings>
